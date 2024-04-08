@@ -5,9 +5,26 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
+    <link rel="stylesheet" href="/src/styles.scss">
   </head>
   <body>
-    <div id="app"></div>
+    <h1>The Word Game!</h1>
+    <h3>How good are your guessing skills?</h3>
+
+    <button>START</button>
+
+    <div class="clue__card">
+      <h2 class="clue__word">CLUE</h2>
+      <p class="clue__tracker-message">This is your first clue</p>
+    </div>
+
+    <div>
+      <label for="user-guess__label">Guess the Word</label>
+      <input type="text" id="user-guess__input">
+      <button class="user-guess__submit">Submit</button>
+      <!-- add another clue button in TS -->
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

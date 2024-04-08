@@ -1,0 +1,21 @@
+25 words or less:
+
+How the game works: The game generates a word and the user has to guess it. With each word comes 25 clue words. The user can keep sorting through the clue words until they guess the word correctly, or they run out of clue words. 
+Eg: House
+    - live
+    -warm
+    - roof
+    ect
+(?maybe reduce to 5-10 words)
+
+If the user guesses the word correctly then they get a congratulations message and the next word button can be clicked, or they can exit the game
+
+If the user guesses the word incorrectly, they can either generate another clue word, or they can guess again. this repeats until they guess the correct word.
+
+Extras if I miraculously get this to work seamlesly: 
+    - Implment a timer on the whole game to see how many words you can guess in 2 minutes for example
+    - Have harder levels, more complicated words or less clue words as the levels get harder
+    - a point system,
+    - generate the random words and clue words from another source!!
+
+    
