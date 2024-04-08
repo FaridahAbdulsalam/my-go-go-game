@@ -11,19 +11,31 @@ import { Words } from "./word-data";
 
 const begin = document.querySelector(".start-game");
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
+const guessInput = document.querySelector<HTMLInputElement>("#input-box");
+const submit = document.querySelector(".user-guess__submit");
 
 
-if(!begin || !clueCard){
+if(!begin || !clueCard|| !guessInput || !submit){
     throw new Error ("Issue with selector")
 }
 
+const random = Words[Math.floor(Math.random()*Words.length)]
+
 const handlStartGame = () => {
-    const random = Words[Math.floor(Math.random()*Words.length)]
     clueCard.innerText = random.clues[0]
 }
 
-begin.addEventListener("click", handlStartGame);
+const handleGuessInput = () => {
+    const guessWord = guessInput.value
+    if(guessWord == random.word){
+        alert("WELL DONE")
+    } else{
+        alert ("Try again")
+    }
+}
 
+begin.addEventListener("click", handlStartGame);
+submit.addEventListener("click", handleGuessInput);
 
 //generates game words randomly
 // const random = Words[0].clues[Math.floor(Math.random()*Words.length)]
