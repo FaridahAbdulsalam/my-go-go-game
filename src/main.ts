@@ -9,9 +9,25 @@ User then tyoes into input box, if input.texcontent matches with the random word
 
 import { Words } from "./word-data";
 
+const begin = document.querySelector(".start-game");
+const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
+
+
+if(!begin || !clueCard){
+    throw new Error ("Issue with selector")
+}
+
+const handlStartGame = () => {
+    const random = Words[Math.floor(Math.random()*Words.length)]
+    clueCard.innerText = random.clues[0]
+}
+
+begin.addEventListener("click", handlStartGame);
+
 
 //generates game words randomly
 // const random = Words[0].clues[Math.floor(Math.random()*Words.length)]
-const random = Words[Math.floor(Math.random()*Words.length)]
-console.log();
+
+
+
 
