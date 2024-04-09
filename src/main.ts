@@ -41,6 +41,9 @@ const handleGuessInput = () => {
     }
 }
 
+//variable that contains each clue given, and allows you to input again until you have no clues left 
+
+
 begin.addEventListener("click", handlStartGame);
 submit.addEventListener("click", handleGuessInput);
 
