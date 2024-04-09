@@ -26,13 +26,13 @@ let cluesUsed = 1;
 
 //The function that controls the commencement of the game. Will always start with the first clue in the clues array
 const handlStartGame = () => {
-    clueCard.innerText = random.clues[0]
+    clueCard.innerText = random.clues[0] + "\n"
 }
 
-
+//This function handles the next clue showing up on the card, by incrementing the counter and appending that to the card. 
 const nextClue = () =>{
     if(cluesUsed < random.clues.length){
-        clueCard.innerText += random.clues[cluesUsed]
+        clueCard.innerText += `${random.clues[cluesUsed]} \n`
         cluesUsed++
         alert ("Try again")
     }else if(cluesUsed = random.clues.length){
@@ -47,8 +47,9 @@ const handleGuessInput = () => {
     if(guessWord == random.word){
         alert("WELL DONE")
     }else{
-       nextClue();
+        nextClue();
     }
+    guessInput.value = "";
 }
 
 //variable that contains each clue given, and allows you to input again until you have no clues left 
