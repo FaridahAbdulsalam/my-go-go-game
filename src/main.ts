@@ -22,7 +22,6 @@ if(!begin || !clueCard|| !guessInput || !submit){
 
 //The word the user is trying to guess
 const random = Words[Math.floor(Math.random()*Words.length)];
-const guessWord = guessInput.value;
 let cluesUsed = 1;
 
 //The function that controls the commencement of the game. Will always start with the first clue in the clues array
@@ -43,14 +42,13 @@ const nextClue = () =>{
 
 
 //The function that checks the guess of the user against the word. Returns a well done message if guess is correct. Otherwise a try again message if it is not a match
-const handleGuessInput = () => 
-{
-    if(guessWord === random.word){
+const handleGuessInput = () => {
+    const guessWord = guessInput.value;
+    if(guessWord == random.word){
         alert("WELL DONE")
     }else{
        nextClue();
     }
-    
 }
 
 //variable that contains each clue given, and allows you to input again until you have no clues left 
