@@ -14,6 +14,7 @@ const begin = document.querySelector(".start-game");
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
 const clueTrackerMessage = document.querySelector(".clue__tracker-message");
 const clueFail = document.querySelector(".clue__fail-message");
+const userGuessContainer = document.querySelector<HTMLElement>(".user-guess");
 const guessInput = document.querySelector<HTMLInputElement>("#input-box");
 const submit = document.querySelector<HTMLButtonElement>(".user-guess__submit");
 
@@ -22,6 +23,7 @@ if (
   !clueCard ||
   !clueTrackerMessage ||
   !clueFail ||
+  !userGuessContainer ||
   !guessInput ||
   !submit
 ) {
@@ -32,11 +34,12 @@ if (
 const random = Words[Math.floor(Math.random() * Words.length)];
 let cluesUsed = 1;
 submit.disabled = true;
-guessInput.disabled = true;
+userGuessContainer.style.display = "none";
+
 
 //The function that controls the commencement of the game. Will always start with the first clue in the clues array
 const handlStartGame = () => {
-    guessInput.disabled = false;
+    userGuessContainer.style.display = "block"
     clueCard.innerText = random.clues[0] + "\n";
     clueTrackerMessage.innerHTML = "This is your first clue";
 };
