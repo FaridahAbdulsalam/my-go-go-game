@@ -39,8 +39,8 @@ const handlStartGame = () => {
   clueTrackerMessage.innerHTML = "This is your first clue";
 };
 
-const enableSubmit = (event: Event) => {    
-    if (event) {
+const enableSubmit = (event: Event) => {         
+    if(guessInput.value != ""){
        submit.disabled = false;
   } else {
     submit.disabled = true;
@@ -74,7 +74,7 @@ const handleGuessInput = () => {
 };
 
 begin.addEventListener("click", handlStartGame);
-guessInput.addEventListener("keypress", enableSubmit);
+guessInput.addEventListener("keyup", enableSubmit);
 submit.addEventListener("click", handleGuessInput);
 
 /*
