@@ -13,11 +13,12 @@ import { Words } from "./word-data";
 const begin = document.querySelector(".start-game");
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
 const clueTrackerMessage = document.querySelector(".clue__tracker-message")
+const clueFail = document.querySelector(".clue__fail-message")
 const guessInput = document.querySelector<HTMLInputElement>("#input-box");
 const submit = document.querySelector(".user-guess__submit");
 
 
-if(!begin || !clueCard||!clueTrackerMessage|| !guessInput || !submit){
+if(!begin || !clueCard||!clueTrackerMessage|| !clueFail || !guessInput || !submit){
     throw new Error ("Issue with selector")
 }
 
@@ -28,6 +29,7 @@ let cluesUsed = 1;
 //The function that controls the commencement of the game. Will always start with the first clue in the clues array
 const handlStartGame = () => {
     clueCard.innerText = random.clues[0] + "\n"
+    clueTrackerMessage.innerHTML = "This is your first clue"
 }
 
 //This function handles the next clue showing up on the card, by incrementing the counter and appending that to the card. 
@@ -35,10 +37,11 @@ const nextClue = () =>{
     if(cluesUsed < random.clues.length){
         clueCard.innerText += `${random.clues[cluesUsed]} \n`
         cluesUsed++
-        alert ("Try again")
+        clueFail.innerHTML = "Try again"
         clueTrackerMessage.innerHTML = `You have had ${cluesUsed} out of ${random.clues.length} clues`
     }else if(cluesUsed = random.clues.length){
-        alert("You have run out of clues")
+        clueFail.innerHTML = "Oh no!, you have run out of clues"
+        clueCard.innerText = `The word was: ${random.word}`
     }
 }
 
@@ -47,7 +50,9 @@ const nextClue = () =>{
 const handleGuessInput = () => {
     const guessWord = guessInput.value.toUpperCase();
     if(guessWord == random.word.toUpperCase()){
-        alert("WELL DONE")
+        clueCard.innerText = "Yay! You got it!" 
+        clueTrackerMessage.innerHTML = `Your clues used: ${cluesUsed}`
+        clueFail.innerHTML = ""
     }else{
         nextClue();
     }
@@ -61,55 +66,6 @@ const handleGuessInput = () => {
 begin.addEventListener("click", handlStartGame);
 submit.addEventListener("click", handleGuessInput);
 
-//generates game words randomly
-// const random = Words[0].clues[Math.floor(Math.random()*Words.length)]
 
-
-/*
-
-if(!hasSubmitBeenClicked && guessWord !== random.word){
-        clueCard.innerText += random.clues[1]
-    }
-
-const guessWord = guessInput.value
-    if(guessWord === random.word){
-        alert("WELL DONE")
-    } else{
-        clueCard.innerText = random.clues[0] + "\n"
-        for(let i = 1; i < random.clues.length; i++){
-            clueCard.innerText += random.clues[i] + "\n";
-        }
-        alert ("Try again")
-    }
-
-    
-    const guessWord = guessInput.value
-    let cluesUsed = 0
-    for(let i=1; i < random.clues.length; i++)
-    {
-        if(guessWord !== random.word)
-        {
-            cluesUsed++
-            clueCard.innerHTML += cluesUsed
-        } else {
-            alert("WELL DONE")
-        }
-    }
- */
-
-    // const nextClue = () => {
-    //     clueCard.innerHTML = random.clues[0]
-    //     const hasSubmitBeenClicked = false
-    //     if(!hasSubmitBeenClicked){
-    //         console.log(random.clues.splice(0,1)); 
-    //         console.log(random.clues.splice(0,1));
-    //         console.log(random.clues.splice(0,1));
-    //         console.log(random.clues.splice(0,1));
-    //         console.log(random.clues.splice(0,1));
-    //         console.log(random.clues.splice(0,1));
-    //     }
-    // }
-
-    // nextClue();
 
 
