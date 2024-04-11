@@ -32,45 +32,48 @@ if (
 const random = Words[Math.floor(Math.random() * Words.length)];
 let cluesUsed = 1;
 submit.disabled = true;
+guessInput.disabled = true;
 
 //The function that controls the commencement of the game. Will always start with the first clue in the clues array
 const handlStartGame = () => {
-  clueCard.innerText = random.clues[0] + "\n";
-  clueTrackerMessage.innerHTML = "This is your first clue";
+    guessInput.disabled = false;
+    clueCard.innerText = random.clues[0] + "\n";
+    clueTrackerMessage.innerHTML = "This is your first clue";
 };
+
 
 const enableSubmit = (event: Event) => {         
     if(guessInput.value != ""){
        submit.disabled = false;
-  } else {
+    } else {
     submit.disabled = true;
-  }
+    }
 };
 
 //This function handles the next clue showing up on the card, by incrementing the counter and appending that to the card.
 const nextClue = () => {
-  if (cluesUsed < random.clues.length) {
-    clueCard.innerText += `${random.clues[cluesUsed]} \n`;
-    cluesUsed++;
-    clueFail.innerHTML = "Try again";
-    clueTrackerMessage.innerHTML = `You have had ${cluesUsed} out of ${random.clues.length} clues`;
-  } else if ((cluesUsed = random.clues.length)) {
-    clueFail.innerHTML = "Oh no!, you have run out of clues";
-    clueCard.innerText = `The word was: ${random.word}`;
-  }
+    if (cluesUsed < random.clues.length) {
+        clueCard.innerText += `${random.clues[cluesUsed]} \n`;
+        cluesUsed++;
+        clueFail.innerHTML = "Try again";
+        clueTrackerMessage.innerHTML = `You have had ${cluesUsed} out of ${random.clues.length} clues`;
+    } else if ((cluesUsed = random.clues.length)) {
+        clueFail.innerHTML = "Oh no!, you have run out of clues";
+        clueCard.innerText = `The word was: ${random.word}`;
+    }
 };
 
 //The function that checks the guess of the user against the word. Returns a well done message if guess is correct. Otherwise a try again message if it is not a match
 const handleGuessInput = () => {
-  const guessWord = guessInput.value.toUpperCase();
-  if (guessWord == random.word.toUpperCase()) {
-    clueCard.innerText = "Yay! You got it!";
-    clueTrackerMessage.innerHTML = `Your clues used: ${cluesUsed}`;
-    clueFail.innerHTML = "";
-  } else {
-    nextClue();
-  }
-  guessInput.value = "";
+    const guessWord = guessInput.value.toUpperCase();
+    if (guessWord == random.word.toUpperCase()) {
+        clueCard.innerText = "Yay! You got it!";
+        clueTrackerMessage.innerHTML = `Your clues used: ${cluesUsed}`;
+        clueFail.innerHTML = "";
+    } else {
+        nextClue();
+    }
+    guessInput.value = "";
 };
 
 begin.addEventListener("click", handlStartGame);
@@ -79,7 +82,6 @@ submit.addEventListener("click", handleGuessInput);
 
 /*
 Things to fix:
-    - Submit cannot be clicked if the input box is empty 
     - Start button can only be clicked at beginning of game 
     - New button needs to be implemented to generate new random word, but cannot generate word already used
     - 
