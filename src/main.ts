@@ -45,7 +45,7 @@ const handlStartGame = () => {
 };
 
 
-const enableSubmit = (event: Event) => {         
+const enableSubmit = () => {         
     if(guessInput.value != ""){
        submit.disabled = false;
     } else {
@@ -70,7 +70,7 @@ const nextClue = () => {
 const handleGuessInput = () => {
     const guessWord = guessInput.value.toUpperCase();
     if (guessWord == random.word.toUpperCase()) {
-        clueCard.innerText = "Yay! You got it!";
+        clueCard.innerText = `Yay! You got it!`
         clueTrackerMessage.innerHTML = `Your clues used: ${cluesUsed}`;
         clueFail.innerHTML = "";
     } else {
