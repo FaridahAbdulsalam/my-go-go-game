@@ -12,11 +12,12 @@ import { Words } from "./word-data";
 
 const begin = document.querySelector(".start-game");
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
+const clueTrackerMessage = document.querySelector(".clue__tracker-message")
 const guessInput = document.querySelector<HTMLInputElement>("#input-box");
 const submit = document.querySelector(".user-guess__submit");
 
 
-if(!begin || !clueCard|| !guessInput || !submit){
+if(!begin || !clueCard||!clueTrackerMessage|| !guessInput || !submit){
     throw new Error ("Issue with selector")
 }
 
@@ -35,6 +36,7 @@ const nextClue = () =>{
         clueCard.innerText += `${random.clues[cluesUsed]} \n`
         cluesUsed++
         alert ("Try again")
+        clueTrackerMessage.innerHTML = `You have had ${cluesUsed} out of ${random.clues.length} clues`
     }else if(cluesUsed = random.clues.length){
         alert("You have run out of clues")
     }
@@ -43,8 +45,8 @@ const nextClue = () =>{
 
 //The function that checks the guess of the user against the word. Returns a well done message if guess is correct. Otherwise a try again message if it is not a match
 const handleGuessInput = () => {
-    const guessWord = guessInput.value;
-    if(guessWord == random.word){
+    const guessWord = guessInput.value.toUpperCase();
+    if(guessWord == random.word.toUpperCase()){
         alert("WELL DONE")
     }else{
         nextClue();
