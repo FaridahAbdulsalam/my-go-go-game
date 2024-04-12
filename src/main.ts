@@ -10,7 +10,8 @@ User then tyoes into input box, if input.texcontent matches with the random word
 import "./styles.scss";
 import { Words } from "./word-data";
 
-const begin = document.querySelector(".start-game");
+const begin = document.querySelector<HTMLButtonElement>(".start-game");
+const nextWord = document.querySelector<HTMLButtonElement>(".next-word")
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
 const clueTrackerMessage = document.querySelector(".clue__tracker-message");
 const clueFail = document.querySelector(".clue__fail-message");
@@ -20,6 +21,7 @@ const submit = document.querySelector<HTMLButtonElement>(".user-guess__submit");
 
 if (
   !begin ||
+  !nextWord ||
   !clueCard ||
   !clueTrackerMessage ||
   !clueFail ||
@@ -30,11 +32,28 @@ if (
   throw new Error("Issue with selector");
 }
 
+const usedWords : string[] = [];
+//create function that gets the random word 
+const getRandomWord = () => {
+    const numberOfWord = Math.floor(Math.random()* Words.length);
+    const randomWord = Words[numberOfWord]
+    if(usedWords.includes(randomWord.word)){
+        console.log(`${randomWord.word} has been used`); 
+    }else{
+        console.log(`This is the new word: ${randomWord.word}`);
+    }
+    console.log(usedWords);
+    usedWords.push(randomWord.word)
+}
+
+
+
 //The word the user is trying to guess
 const random = Words[Math.floor(Math.random() * Words.length)];
 let cluesUsed = 1;
 submit.disabled = true;
 userGuessContainer.style.display = "none";
+nextWord.style.display = "none"
 
 
 //The function that controls the commencement of the game. Will always start with the first clue in the clues array
@@ -42,11 +61,14 @@ const handlStartGame = () => {
     userGuessContainer.style.display = "block"
     clueCard.innerText = random.clues[0] + "\n";
     clueTrackerMessage.innerHTML = "This is your first clue";
+    begin.style.display = "none";
+    nextWord.style.display = "block";
+    usedWords.push(random.word);
 };
 
 
 const enableSubmit = () => {         
-    if(guessInput.value != ""){
+    if(guessInput.value !== ""){
        submit.disabled = false;
     } else {
     submit.disabled = true;
@@ -79,7 +101,19 @@ const handleGuessInput = () => {
     guessInput.value = "";
 };
 
+const handleNextWord = (event: Event) => {
+    console.log(event);
+    console.log(random.word);
+    
+    clueCard.innerText = random.clues[0] + "\n"   
+
+    // if(usedWords.includes(random.word)){
+    //     return null
+    // }
+}
+
 begin.addEventListener("click", handlStartGame);
+nextWord.addEventListener("click", getRandomWord)
 guessInput.addEventListener("keyup", enableSubmit);
 submit.addEventListener("click", handleGuessInput);
 
