@@ -32,17 +32,23 @@ if (
   throw new Error("Issue with selector");
 }
 
+const copyWords = [...Words]
 const usedWords : string[] = [];
 //create function that gets the random word 
 const getRandomWord = () => {
-    const numberOfWord = Math.floor(Math.random()* Words.length);
-    const randomWord = Words[numberOfWord]
-    if(usedWords.includes(randomWord.word)){
-        console.log(`${randomWord.word} has been used`); 
+    const numberOfWord = Math.floor(Math.random()* copyWords.length);
+    const randomWord = copyWords[numberOfWord]
+    const index = copyWords.indexOf(randomWord);
+    copyWords.splice(index, 1)
+    
+    if(copyWords.length == 0){
+        console.log("Well done, you have guessed all the words");
     }else{
-        console.log(`This is the new word: ${randomWord.word}`);
+        console.log(copyWords)
+        console.log(randomWord.word);
+        console.log(usedWords);
     }
-    console.log(usedWords);
+
     usedWords.push(randomWord.word)
 }
 
@@ -119,7 +125,19 @@ submit.addEventListener("click", handleGuessInput);
 
 /*
 Things to fix:
-    - Start button can only be clicked at beginning of game 
     - New button needs to be implemented to generate new random word, but cannot generate word already used
-    - 
+    
+
+const getRandomWord = () => {
+    const numberOfWord = Math.floor(Math.random()* Words.length);
+    const randomWord = Words[numberOfWord]
+    if(usedWords.includes(randomWord.word)){
+        console.log(`${randomWord.word} has been used`); 
+    }else{
+        console.log(`This is the new word: ${randomWord.word}`);
+    }
+    console.log(usedWords);
+    usedWords.push(randomWord.word)
+}
+
 */
