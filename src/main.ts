@@ -34,29 +34,30 @@ if (
 
 const copyWords = [...Words]
 const usedWords : string[] = [];
+
 //create function that gets the random word 
+
+
 const getRandomWord = () => {
     const numberOfWord = Math.floor(Math.random()* copyWords.length);
     const randomWord = copyWords[numberOfWord]
-    const index = copyWords.indexOf(randomWord);
-    copyWords.splice(index, 1)
+    const currentWord = copyWords.indexOf(randomWord);
+    copyWords.splice(currentWord, 1)
     
     if(copyWords.length == 0){
-        console.log("Well done, you have guessed all the words");
+        clueCard.innerText = "Well done, you have guessed all the words";
     }else{
-        console.log(copyWords)
-        console.log(randomWord.word);
-        console.log(usedWords);
+        
     }
-
     usedWords.push(randomWord.word)
+
+    return randomWord
 }
 
-
-
 //The word the user is trying to guess
-const random = Words[Math.floor(Math.random() * Words.length)];
+// const random = Words[Math.floor(Math.random() * Words.length)];
 let cluesUsed = 1;
+let theRandomWord = getRandomWord();
 submit.disabled = true;
 userGuessContainer.style.display = "none";
 nextWord.style.display = "none"
@@ -64,12 +65,11 @@ nextWord.style.display = "none"
 
 //The function that controls the commencement of the game. Will always start with the first clue in the clues array
 const handlStartGame = () => {
+    clueCard.innerText = theRandomWord.clues[0] + "\n";
     userGuessContainer.style.display = "block"
-    clueCard.innerText = random.clues[0] + "\n";
     clueTrackerMessage.innerHTML = "This is your first clue";
     begin.style.display = "none";
     nextWord.style.display = "block";
-    usedWords.push(random.word);
 };
 
 
@@ -83,21 +83,22 @@ const enableSubmit = () => {
 
 //This function handles the next clue showing up on the card, by incrementing the counter and appending that to the card.
 const nextClue = () => {
-    if (cluesUsed < random.clues.length) {
-        clueCard.innerText += `${random.clues[cluesUsed]} \n`;
+    if (cluesUsed < theRandomWord.clues.length) {
+        clueCard.innerText += `${theRandomWord.clues[cluesUsed]} \n`;
         cluesUsed++;
         clueFail.innerHTML = "Try again";
-        clueTrackerMessage.innerHTML = `You have had ${cluesUsed} out of ${random.clues.length} clues`;
-    } else if ((cluesUsed = random.clues.length)) {
+        clueTrackerMessage.innerHTML = `You have had ${cluesUsed} out of ${theRandomWord.clues.length} clues`;
+    } else if ((cluesUsed = theRandomWord.clues.length)) {
         clueFail.innerHTML = "Oh no!, you have run out of clues";
-        clueCard.innerText = `The word was: ${random.word}`;
+        clueCard.innerText = `The word was: ${theRandomWord.word}`;
+        //next word enable
     }
 };
 
 //The function that checks the guess of the user against the word. Returns a well done message if guess is correct. Otherwise a try again message if it is not a match
 const handleGuessInput = () => {
     const guessWord = guessInput.value.toUpperCase();
-    if (guessWord == random.word.toUpperCase()) {
+    if (guessWord == theRandomWord.word.toUpperCase()) {
         clueCard.innerText = `Yay! You got it!`
         clueTrackerMessage.innerHTML = `Your clues used: ${cluesUsed}`;
         clueFail.innerHTML = "";
@@ -105,21 +106,22 @@ const handleGuessInput = () => {
         nextClue();
     }
     guessInput.value = "";
+    submit.disabled = true;
 };
 
 const handleNextWord = (event: Event) => {
     console.log(event);
-    console.log(random.word);
+    console.log(theRandomWord.word);
     
-    clueCard.innerText = random.clues[0] + "\n"   
+    clueCard.innerText = theRandomWord.clues[0] + "\n"   
 
-    // if(usedWords.includes(random.word)){
+    // if(usedWords.includes(theRandomWord.word)){
     //     return null
     // }
 }
 
 begin.addEventListener("click", handlStartGame);
-nextWord.addEventListener("click", getRandomWord)
+nextWord.addEventListener("click", getRandomWord);
 guessInput.addEventListener("keyup", enableSubmit);
 submit.addEventListener("click", handleGuessInput);
 
