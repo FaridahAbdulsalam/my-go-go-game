@@ -32,13 +32,16 @@ if (
   throw new Error("Issue with selector");
 }
 
+//All my variables
 const copyWords = [...Words]
 const usedWords : string[] = [];
-let theRandomWord: { word: string; clues: string[];} //declaring variable but no value assigned (so I don't have to call the function outside)
+let theRandomWord: { word: string; clues: string[];}; //declaring variable but no value assigned (so I don't have to call the function outside)
+let cluesUsed : number;
+submit.disabled = true;
+userGuessContainer.style.display = "none";
+nextWord.style.display = "none"
 
 //create function that gets the random word 
-
-
 const getRandomWord = () => {
     const numberOfWord = Math.floor(Math.random()* copyWords.length);
     const randomWord = copyWords[numberOfWord]
@@ -47,30 +50,24 @@ const getRandomWord = () => {
     
     if(copyWords.length == 0){
         clueCard.innerText = "Well done, you have guessed all the words";
+        clueTrackerMessage.innerHTML = "";
+
     }else{
         clueCard.innerText = randomWord.clues[0] + "\n";
         clueTrackerMessage.innerHTML = "This is your first clue";
 
     }
-    usedWords.push(randomWord.word)
 
-    return theRandomWord = randomWord //assign value to theRandomWord so I can use in the rest of my code 
+    usedWords.push(randomWord.word)
+    theRandomWord = randomWord //assign value to theRandomWord so I can use in the rest of my code 
+    cluesUsed = 1
 }
 
-//The word the user is trying to guess
-// const random = Words[Math.floor(Math.random() * Words.length)];
-let cluesUsed = 1;
-submit.disabled = true;
-userGuessContainer.style.display = "none";
-nextWord.style.display = "none"
 
-
-//The function that controls the commencement of the game. Will always start with the first clue in the clues array
+//The function that controls the commencement of the game. 
 const handlStartGame = () => {
     getRandomWord()
-    clueCard.innerText = theRandomWord.clues[0] + "\n";
     userGuessContainer.style.display = "block"
-    clueTrackerMessage.innerHTML = "This is your first clue";
     begin.style.display = "none";
     nextWord.style.display = "block";
 };
