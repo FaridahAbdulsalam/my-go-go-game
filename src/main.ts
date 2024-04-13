@@ -37,9 +37,11 @@ const copyWords = [...Words]
 const usedWords : string[] = [];
 let theRandomWord: { word: string; clues: string[];}; //declaring variable but no value assigned (so I don't have to call the function outside)
 let cluesUsed : number;
+let score = 72;
 submit.disabled = true;
 userGuessContainer.style.display = "none";
-nextWord.style.display = "none"
+nextWord.style.display = "none";
+
 
 //create function that gets the random word 
 const getRandomWord = () => {
@@ -49,18 +51,19 @@ const getRandomWord = () => {
     copyWords.splice(currentWord, 1)
     
     if(copyWords.length == 0){
+        console.log(score);
         clueCard.innerText = "Well done, you have guessed all the words";
         clueTrackerMessage.innerHTML = "";
 
     }else{
         clueCard.innerText = randomWord.clues[0] + "\n";
         clueTrackerMessage.innerHTML = "This is your first clue";
-
     }
 
     usedWords.push(randomWord.word)
+    nextWord.disabled =  true;
     theRandomWord = randomWord //assign value to theRandomWord so I can use in the rest of my code 
-    cluesUsed = 1
+    cluesUsed = 1//resets back to 1 everytime getRandomWord is called
 }
 
 
@@ -70,6 +73,7 @@ const handlStartGame = () => {
     userGuessContainer.style.display = "block"
     begin.style.display = "none";
     nextWord.style.display = "block";
+    nextWord.disabled = true;
 };
 
 
@@ -87,11 +91,12 @@ const nextClue = () => {
         clueCard.innerText += `${theRandomWord.clues[cluesUsed]} \n`;
         cluesUsed++;
         clueFail.innerHTML = "Try again";
+        console.log(score -= 2);
         clueTrackerMessage.innerHTML = `You have had ${cluesUsed} out of ${theRandomWord.clues.length} clues`;
     } else if ((cluesUsed = theRandomWord.clues.length)) {
         clueFail.innerHTML = "Oh no!, you have run out of clues";
         clueCard.innerText = `The word was: ${theRandomWord.word}`;
-        //next word enable
+        nextWord.disabled = false;
     }
 };
 
@@ -102,6 +107,7 @@ const handleGuessInput = () => {
         clueCard.innerText = `Yay! You got it!`
         clueTrackerMessage.innerHTML = `Your clues used: ${cluesUsed}`;
         clueFail.innerHTML = "";
+        nextWord.disabled = false;
     } else {
         nextClue();
     }
@@ -109,16 +115,6 @@ const handleGuessInput = () => {
     submit.disabled = true;
 };
 
-const handleNextWord = (event: Event) => {
-    console.log(event);
-    console.log(theRandomWord.word);
-    
-    clueCard.innerText = theRandomWord.clues[0] + "\n"   
-
-    // if(usedWords.includes(theRandomWord.word)){
-    //     return null
-    // }
-}
 
 begin.addEventListener("click", handlStartGame);
 nextWord.addEventListener("click", getRandomWord);
@@ -126,20 +122,11 @@ guessInput.addEventListener("keyup", enableSubmit);
 submit.addEventListener("click", handleGuessInput);
 
 /*
-Things to fix:
-    - New button needs to be implemented to generate new random word, but cannot generate word already used
-    
+Things to add:
+    - score counter 
+        let score = 72
+        score - 2 
 
-const getRandomWord = () => {
-    const numberOfWord = Math.floor(Math.random()* Words.length);
-    const randomWord = Words[numberOfWord]
-    if(usedWords.includes(randomWord.word)){
-        console.log(`${randomWord.word} has been used`); 
-    }else{
-        console.log(`This is the new word: ${randomWord.word}`);
-    }
-    console.log(usedWords);
-    usedWords.push(randomWord.word)
-}
-
+    - next level
+    - unit testing
 */
