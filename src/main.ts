@@ -8,7 +8,7 @@ User then tyoes into input box, if input.texcontent matches with the random word
 */
 
 import "./styles.scss";
-import { Words } from "./word-data";
+import { Words, WordsTwo } from "./word-data";
 
 const begin = document.querySelector<HTMLButtonElement>(".start-game");
 const nextWord = document.querySelector<HTMLButtonElement>(".next-word")
@@ -51,9 +51,8 @@ const getRandomWord = () => {
     copyWords.splice(currentWord, 1)
     
     if(copyWords.length == 0){
-        console.log(score);
         clueCard.innerText = "Well done, you have guessed all the words";
-        clueTrackerMessage.innerHTML = "";
+        clueTrackerMessage.innerHTML = `Total Score: ${score}`;
 
     }else{
         clueCard.innerText = randomWord.clues[0] + "\n";
@@ -65,6 +64,7 @@ const getRandomWord = () => {
     theRandomWord = randomWord //assign value to theRandomWord so I can use in the rest of my code 
     cluesUsed = 1//resets back to 1 everytime getRandomWord is called
 }
+
 
 
 //The function that controls the commencement of the game. 
@@ -90,8 +90,9 @@ const nextClue = () => {
     if (cluesUsed < theRandomWord.clues.length) {
         clueCard.innerText += `${theRandomWord.clues[cluesUsed]} \n`;
         cluesUsed++;
-        clueFail.innerHTML = "Try again";
-        console.log(score -= 2);
+        let currentScore = (score -= 2);
+        clueFail.innerHTML = `Try again, your current score is: ${currentScore}`;
+        
         clueTrackerMessage.innerHTML = `You have had ${cluesUsed} out of ${theRandomWord.clues.length} clues`;
     } else if ((cluesUsed = theRandomWord.clues.length)) {
         clueFail.innerHTML = "Oh no!, you have run out of clues";
@@ -123,10 +124,6 @@ submit.addEventListener("click", handleGuessInput);
 
 /*
 Things to add:
-    - score counter 
-        let score = 72
-        score - 2 
-
     - next level
     - unit testing
 */
