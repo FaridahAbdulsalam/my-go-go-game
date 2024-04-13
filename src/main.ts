@@ -46,14 +46,14 @@ nextWord.style.display = "none";
 
 //Timer function
 const timer = setInterval(() => {
-    secs--
+    secs--;
     console.log(secs);
     
-    if(secs == 0) {
-        minutes -= 1
+    if(secs < 0) {
+        minutes --;
         secs = 10
         console.log(`this is ${minutes}`);
-    }else if(minutes == 0){
+    }else if(secs == 0 && minutes == 0){
         clearInterval(timer);
         console.log("time's up");
     }
