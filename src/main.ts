@@ -33,7 +33,8 @@ if (
 }
 
 //All my variables
-let count = 60;
+let secs = 10;
+let minutes = 5
 const copyWords = [...Words]
 const usedWords : string[] = [];
 let theRandomWord: { word: string; clues: string[];}; //declaring variable but no value assigned (so I don't have to call the function outside)
@@ -45,14 +46,20 @@ nextWord.style.display = "none";
 
 //Timer function
 const timer = setInterval(() => {
-    count--
-    console.log(count);
-    if(count === 0) {
+    secs--
+    console.log(secs);
+    
+    if(secs == 0) {
+        minutes -= 1
+        secs = 10
+        console.log(`this is ${minutes}`);
+    }else if(minutes == 0){
         clearInterval(timer);
         console.log("time's up");
-        
     }
 }, 1000);
+
+ 
 
 
 
