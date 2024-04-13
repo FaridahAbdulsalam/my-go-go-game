@@ -8,7 +8,7 @@ User then tyoes into input box, if input.texcontent matches with the random word
 */
 
 import "./styles.scss";
-import { Words, WordsTwo } from "./word-data";
+import { Words} from "./word-data";
 
 const begin = document.querySelector<HTMLButtonElement>(".start-game");
 const nextWord = document.querySelector<HTMLButtonElement>(".next-word")
@@ -33,6 +33,7 @@ if (
 }
 
 //All my variables
+let count = 60;
 const copyWords = [...Words]
 const usedWords : string[] = [];
 let theRandomWord: { word: string; clues: string[];}; //declaring variable but no value assigned (so I don't have to call the function outside)
@@ -41,6 +42,18 @@ let score = 72;
 submit.disabled = true;
 userGuessContainer.style.display = "none";
 nextWord.style.display = "none";
+
+//Timer function
+const timer = setInterval(() => {
+    count--
+    console.log(count);
+    if(count === 0) {
+        clearInterval(timer);
+        console.log("time's up");
+        
+    }
+}, 1000);
+
 
 
 //create function that gets the random word 
@@ -124,6 +137,8 @@ submit.addEventListener("click", handleGuessInput);
 
 /*
 Things to add:
+    - restart
+    - timer 
     - next level
     - unit testing
 */

@@ -60,45 +60,45 @@ export const Words = [
   },
 ];
 
-export const WordsTwo = [
-  {
-    words: "Hospital",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "Car",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "Mountain",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "President",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "Zombie",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "FunFair",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "Jungle",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "Paris",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "School",
-    clues: ["one", "two", "three", "four"]
-  },
-  {
-    words: "Jewellry",
-    clues: ["one", "two", "three", "four"]
-  },
-]
+// export const WordsTwo = [
+//   {
+//     words: "Hospital",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "Car",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "Mountain",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "President",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "Zombie",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "FunFair",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "Jungle",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "Paris",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "School",
+//     clues: ["one", "two", "three", "four"]
+//   },
+//   {
+//     words: "Jewellry",
+//     clues: ["one", "two", "three", "four"]
+//   },
+// ]
