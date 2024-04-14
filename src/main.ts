@@ -25,9 +25,7 @@ const guessInput = document.querySelector<HTMLInputElement>("#input-box");
 const submit = document.querySelector<HTMLButtonElement>(".user-guess__submit");
 const timeContainer = document.querySelector<HTMLElement>(".timer");
 const scoreTracker = document.querySelector<HTMLElement>(".score-tracker");
-const scoreTrackerMessage = document.querySelector<HTMLElement>(".score-tracker__message");
-const restartButton =
-  document.querySelector<HTMLButtonElement>(".restart-button");
+const restartButton =document.querySelector<HTMLButtonElement>(".restart-button");
 
 if (
   !instructionsCard ||
@@ -42,7 +40,6 @@ if (
   !submit ||
   !timeContainer ||
   !scoreTracker ||
-  !scoreTrackerMessage ||
   !restartButton
 ) {
   throw new Error("Issue with selector");
