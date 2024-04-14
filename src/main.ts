@@ -9,6 +9,7 @@ User then tyoes into input box, if input.texcontent matches with the random word
 
 import "./styles.scss";
 import { Words} from "./word-data";
+import confetti, {Options} from "canvas-confetti";
 
 const begin = document.querySelector<HTMLButtonElement>(".start-game");
 const nextWord = document.querySelector<HTMLButtonElement>(".next-word")
@@ -43,11 +44,27 @@ let copyWords = [...Words]
 let usedWords : string[] = [];
 let theRandomWord: { word: string; clues: string[];}; //declaring variable but no value assigned (so I don't have to call the function outside)
 let cluesUsed : number;
-let timer: number;
+let timer: number | ReturnType<typeof setInterval>; //use a TS utility type which allows you to create a type that suits the return type of the function. 
 let score = 72;
 submit.disabled = true;
 userGuessContainer.style.display = "none";
 nextWord.style.display = "none";
+
+// const getRandomNumberInRange = (min: number, max: number) => {
+//     return Math.random() * (max - min) + min;
+//   };
+  
+  const fireConfetti = () => {
+    const options: Options = {
+      particleCount: 200,
+      spread: 180,
+      colors: ["#ee2fbe", "#fff", "#800080", "#e3d10e"],
+      scalar: 0.6,
+      shapes: ["circle", "star"],
+    };
+  
+    confetti(options);
+  };
 
 
 //The function that gets the random word 
@@ -139,6 +156,7 @@ const handleGuessInput = () => {
     if (guessWord == theRandomWord.word.toUpperCase()) {
         clueCard.innerText = `Yay! You got it!`
         clueTrackerMessage.innerHTML = `Your clues used: ${cluesUsed}`;
+        fireConfetti();
         clueFail.innerHTML = "";
         nextWord.disabled = false;
     } else {
