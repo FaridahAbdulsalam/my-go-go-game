@@ -112,7 +112,6 @@ const handlStartGame = () => {
             clueTrackerMessage.innerHTML = "";
             clueFail.innerHTML ="";
             clueCard.innerText = `You guessed ${usedWords.length}/25 words`
-            restartButton.innerHTML = "TRY AGAIN"
             return;
         }
     
