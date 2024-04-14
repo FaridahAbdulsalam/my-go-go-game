@@ -159,15 +159,9 @@ const restartGame = () => {
     nextWord.style.display = "none";
     clueCard.innerHTML = "Click start to play";
     clueTrackerMessage.innerHTML = "";
+    clueFail.innerHTML = "";
     clearInterval(timer);
     timeContainer.innerHTML = "<h3>Your 5 minute timer will begin when the game starts</h3>";
-/*
-Start button should come back
-score should be reset 
-used words array should be emptied
-card should have start message 
-time should stop and reset
-*/
 }
 
 
@@ -179,6 +173,6 @@ restartButton.addEventListener("click", restartGame)
 
 /*
 Things to add:
-    - next level
+    - confetti package
     - unit testing
 */
