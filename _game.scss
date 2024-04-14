@@ -24,6 +24,32 @@
     }
 }
 
+.score-tracker{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border: solid 5px white;
+    border-radius: 5px;
+    background-color: $primary-colour;
+    height: 10vh;
+    width: 20vw;
+    padding: 20px;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-family: $secondary-font;
+    font-size: 40px;
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2{
+        font-family: $secondary-font;
+        font-size: 20px;
+    }
+}
+
 
 .game__display{
     display: flex;
