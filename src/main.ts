@@ -46,14 +46,8 @@ submit.disabled = true;
 userGuessContainer.style.display = "none";
 nextWord.style.display = "none";
 
-//Timer function
 
-
- 
-
-
-
-//create function that gets the random word 
+//The function that gets the random word 
 const getRandomWord = () => {
     const numberOfWord = Math.floor(Math.random()* copyWords.length);
     const randomWord = copyWords[numberOfWord]
@@ -81,6 +75,8 @@ const getRandomWord = () => {
 const handlStartGame = () => {
 
     getRandomWord()
+
+    //Timer begins when game is started
     const timer = setInterval(() => {
         if(secs < 0 ) {
             minutes--;
@@ -98,6 +94,8 @@ const handlStartGame = () => {
             }
         secs--;
     }, 1000);
+
+
     userGuessContainer.style.display = "block"
     begin.style.display = "none";
     nextWord.style.display = "block";
