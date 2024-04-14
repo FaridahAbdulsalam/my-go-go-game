@@ -35,8 +35,8 @@ if (
 }
 
 //All my variables
-let secs = 10;
-let minutes = 5
+let secs = 59;
+let minutes = 4
 const copyWords = [...Words]
 const usedWords : string[] = [];
 let theRandomWord: { word: string; clues: string[];}; //declaring variable but no value assigned (so I don't have to call the function outside)
@@ -47,24 +47,7 @@ userGuessContainer.style.display = "none";
 nextWord.style.display = "none";
 
 //Timer function
-const timer = setInterval(() => {
-    if(secs < 0 ) {
-        minutes--;
-        secs = 10
-    }
-    else if(secs == 0 && minutes == 0){
-        clearInterval(timer);
-        timeContainer.innerHTML = `time's up`;
-        return;
-    }
 
-    timeContainer.innerHTML = `0${minutes}:${secs}`
-    if(secs <= 9){
-        timeContainer.innerHTML = `0${minutes}:0${secs}`
-        }
-    secs--;
-
-}, 1000);
 
  
 
@@ -96,11 +79,30 @@ const getRandomWord = () => {
 
 //The function that controls the commencement of the game. 
 const handlStartGame = () => {
+
     getRandomWord()
+    const timer = setInterval(() => {
+        if(secs < 0 ) {
+            minutes--;
+            secs = 59
+        }
+        else if(secs == 0 && minutes == 0){
+            clearInterval(timer);
+            timeContainer.innerHTML = `time's up`;
+            return;
+        }
+    
+        timeContainer.innerHTML = `0${minutes}:${secs}`
+        if(secs <= 9){
+            timeContainer.innerHTML = `0${minutes}:0${secs}`
+            }
+        secs--;
+    }, 1000);
     userGuessContainer.style.display = "block"
     begin.style.display = "none";
     nextWord.style.display = "block";
     nextWord.disabled = true;
+
 };
 
 
