@@ -18,6 +18,7 @@ const clueFail = document.querySelector(".clue__fail-message");
 const userGuessContainer = document.querySelector<HTMLElement>(".user-guess");
 const guessInput = document.querySelector<HTMLInputElement>("#input-box");
 const submit = document.querySelector<HTMLButtonElement>(".user-guess__submit");
+const timeContainer = document.querySelector<HTMLElement>(".timer");
 
 if (
   !begin ||
@@ -27,7 +28,8 @@ if (
   !clueFail ||
   !userGuessContainer ||
   !guessInput ||
-  !submit
+  !submit ||
+  !timeContainer
 ) {
   throw new Error("Issue with selector");
 }
@@ -49,14 +51,17 @@ const timer = setInterval(() => {
     if(secs < 0 ) {
         minutes--;
         secs = 10
-        console.log(`this is ${minutes}`);
-    }else if(secs == 0 && minutes == 0){
+    }
+    else if(secs == 0 && minutes == 0){
         clearInterval(timer);
-        console.log("time's up");
+        timeContainer.innerHTML = `time's up`;
         return;
     }
 
-    console.log(secs);
+    timeContainer.innerHTML = `0${minutes}:${secs}`
+    if(secs <= 9){
+        timeContainer.innerHTML = `0${minutes}:0${secs}`
+        }
     secs--;
 
 }, 1000);
