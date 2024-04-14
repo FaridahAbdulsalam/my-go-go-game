@@ -106,9 +106,13 @@ const handlStartGame = () => {
         }
         else if(secs == 0 && minutes == 0){
             clearInterval(timer);
-            timeContainer.innerHTML = `Time's Up! You guessed ${usedWords.length}/25 words`;
+            timeContainer.innerHTML = `Time's Up!`;
             userGuessContainer.style.display = "none"
-            nextWord.disabled = true;
+            nextWord.style.display = "none";
+            clueTrackerMessage.innerHTML = "";
+            clueFail.innerHTML ="";
+            clueCard.innerText = `You guessed ${usedWords.length}/25 words`
+            restartButton.innerHTML = "TRY AGAIN"
             return;
         }
     
@@ -120,7 +124,7 @@ const handlStartGame = () => {
     }, 1000);
 
 
-    userGuessContainer.style.display = "block"
+    userGuessContainer.style.display = "flex"
     begin.style.display = "none";
     nextWord.style.display = "block";
     nextWord.disabled = true;
