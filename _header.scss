@@ -1,0 +1,14 @@
+@use "./variables" as *;
+
+.game-title__container{
+    border: solid 8px $primary-colour;
+    background-color: $secondary-colour;
+    opacity: 0.8;
+    border-radius: 20px;
+
+    h1 {
+        font-family: $tertiary-font;
+        font-size: 50px;
+        text-align: center;
+      }
+}

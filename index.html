@@ -7,21 +7,23 @@
     <title>Vite + TS</title>
   </head>
   <body>
-
     <header class="game-title__container">
       <h1 class="game-title">25 Words or less: A spin off</h1>
     </header>
 
     <section class="intro">
       <h3 class="intro__title">How good are your guessing skills?</h3>
-      <h4 class="intro__tagline">Inspired by the popular gaming show "25 Words or less"!</h4>
+      <h4 class="intro__tagline">
+        Inspired by the popular gaming show "25 Words or less"!
+      </h4>
       <p class="intro__instructions">
         How to play: When you click start, a 5 minute timer will begin counting
         down. Your first clue will automatically show up on the card and you can
-        begin guessing, once you have made a guess make sure to click SUBMIT. If
-        you guess right, you can move onto the next word, if not, you'll kindly
-        recieve another clue. BE CAREFUL: for each additional clue you use, you
-        lose 2 points.
+        begin guessing, once you have made a guess make sure to click
+        <span style="color: orange">SUBMIT</span>. If you guess right, you can
+        move onto the next word, if not, you'll kindly recieve another clue.
+        <span style="color: red">BE CAREFUL</span>: for each additional clue you
+        use, you lose 2 points.
       </p>
       <p class="intro__instructions">
         Race against the timer whilst trying to keep all your points, once 5
@@ -30,19 +32,22 @@
       </p>
     </section>
 
-    <button class="start-game">START</button>
-    <button class="next-word">Next Word</button>
-
     <section class="timer">
       <h3 class="timer__title">
         Your 5 minute timer will begin when the game starts
       </h3>
     </section>
 
-    <section class="clue__card">
-      <h2 class="clue__word">Click start to play</h2>
+    <section class="game__display">
+      <div class="game__buttons-container">
+        <button class="start-game">START</button>
+        <button class="next-word">Next Word</button>
+      </div>
+
+      <div class="clue__card">
+        <h2 class="clue__word">Click start to play</h2>
+      </div>
     </section>
-    
 
     <section class="user-guess">
       <label for="input-box">Guess the Word</label>
@@ -54,7 +59,6 @@
       <p class="clue__tracker-message"></p>
       <p class="clue__fail-message"></p>
     </section>
-
 
     <button class="restart-button">Restart Game</button>
 
