@@ -85,6 +85,7 @@ const getRandomWord = () => {
     }else{
         clueCard.innerText = randomWord.clues[0] + "\n";
         clueTrackerMessage.innerHTML = "This is your first clue";
+        clueFail.innerHTML = "";
     }
 
     usedWords.push(randomWord.word)
@@ -111,6 +112,7 @@ const handlStartGame = () => {
             timeContainer.innerHTML = `Time's Up!`;
             userGuessContainer.style.display = "none"
             nextWord.style.display = "none";
+            clueMessageContainer.style.display ="none";
             clueTrackerMessage.innerHTML = "";
             clueFail.innerHTML ="";
             clueCard.innerText = `You guessed ${usedWords.length}/25 words`
