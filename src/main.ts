@@ -19,6 +19,7 @@ const userGuessContainer = document.querySelector<HTMLElement>(".user-guess");
 const guessInput = document.querySelector<HTMLInputElement>("#input-box");
 const submit = document.querySelector<HTMLButtonElement>(".user-guess__submit");
 const timeContainer = document.querySelector<HTMLElement>(".timer");
+const restartButton = document.querySelector<HTMLButtonElement>(".restart-button");
 
 if (
   !begin ||
@@ -29,18 +30,20 @@ if (
   !userGuessContainer ||
   !guessInput ||
   !submit ||
-  !timeContainer
+  !timeContainer ||
+  !restartButton
 ) {
   throw new Error("Issue with selector");
 }
 
-//All my variables
+//All my variables - use let so they can be reset later
 let secs = 59;
 let minutes = 4
-const copyWords = [...Words]
-const usedWords : string[] = [];
+let copyWords = [...Words]
+let usedWords : string[] = [];
 let theRandomWord: { word: string; clues: string[];}; //declaring variable but no value assigned (so I don't have to call the function outside)
 let cluesUsed : number;
+let timer: number;
 let score = 72;
 submit.disabled = true;
 userGuessContainer.style.display = "none";
@@ -77,14 +80,16 @@ const handlStartGame = () => {
     getRandomWord()
 
     //Timer begins when game is started
-    const timer = setInterval(() => {
+     timer = setInterval(() => {
         if(secs < 0 ) {
             minutes--;
             secs = 59
         }
         else if(secs == 0 && minutes == 0){
             clearInterval(timer);
-            timeContainer.innerHTML = `time's up`;
+            timeContainer.innerHTML = `Time's Up! You guessed ${usedWords.length}/25 words`;
+            userGuessContainer.style.display = "none"
+            nextWord.disabled = true;
             return;
         }
     
@@ -143,16 +148,37 @@ const handleGuessInput = () => {
     submit.disabled = true;
 };
 
+const restartGame = () => {
+    begin.style.display = "block";
+    score = 72;
+    copyWords = [...Words]
+    usedWords = [];
+    secs = 59;
+    minutes = 4;
+    userGuessContainer.style.display = "none";
+    nextWord.style.display = "none";
+    clueCard.innerHTML = "Click start to play";
+    clueTrackerMessage.innerHTML = "";
+    clearInterval(timer);
+    timeContainer.innerHTML = "<h3>Your 5 minute timer will begin when the game starts</h3>";
+/*
+Start button should come back
+score should be reset 
+used words array should be emptied
+card should have start message 
+time should stop and reset
+*/
+}
+
 
 begin.addEventListener("click", handlStartGame);
 nextWord.addEventListener("click", getRandomWord);
 guessInput.addEventListener("keyup", enableSubmit);
 submit.addEventListener("click", handleGuessInput);
+restartButton.addEventListener("click", restartGame)
 
 /*
 Things to add:
-    - restart
-    - timer 
     - next level
     - unit testing
 */
