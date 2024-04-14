@@ -11,6 +11,7 @@ import "./styles.scss";
 import { Words} from "./word-data";
 import confetti, {Options} from "canvas-confetti";
 
+const instructionsCard = document.querySelector<HTMLInputElement>(".intro")
 const begin = document.querySelector<HTMLButtonElement>(".start-game");
 const nextWord = document.querySelector<HTMLButtonElement>(".next-word");
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
@@ -23,6 +24,7 @@ const timeContainer = document.querySelector<HTMLElement>(".timer");
 const restartButton = document.querySelector<HTMLButtonElement>(".restart-button");
 
 if (
+    !instructionsCard ||
   !begin ||
   !nextWord ||
   !clueCard ||
@@ -122,6 +124,7 @@ const handlStartGame = () => {
     begin.style.display = "none";
     nextWord.style.display = "block";
     nextWord.disabled = true;
+    instructionsCard.style.display = "none";
 
 };
 
@@ -167,6 +170,8 @@ export const handleGuessInput = () => {
 };
 
 const restartGame = () => {
+
+    instructionsCard.style.display = "block";
     begin.style.display = "block";
     score = 72;
     copyWords = [...Words]
