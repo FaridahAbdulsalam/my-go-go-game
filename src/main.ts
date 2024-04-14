@@ -15,6 +15,7 @@ const instructionsCard = document.querySelector<HTMLInputElement>(".intro")
 const begin = document.querySelector<HTMLButtonElement>(".start-game");
 const nextWord = document.querySelector<HTMLButtonElement>(".next-word");
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
+const clueMessageContainer = document.querySelector<HTMLElement>(".clue__messages-container")
 const clueTrackerMessage = document.querySelector(".clue__tracker-message");
 const clueFail = document.querySelector(".clue__fail-message");
 const userGuessContainer = document.querySelector<HTMLElement>(".user-guess");
@@ -23,11 +24,11 @@ const submit = document.querySelector<HTMLButtonElement>(".user-guess__submit");
 const timeContainer = document.querySelector<HTMLElement>(".timer");
 const restartButton = document.querySelector<HTMLButtonElement>(".restart-button");
 
-if (
-    !instructionsCard ||
+if (!instructionsCard ||
   !begin ||
   !nextWord ||
   !clueCard ||
+  !clueMessageContainer ||
   !clueTrackerMessage ||
   !clueFail ||
   !userGuessContainer ||
@@ -51,6 +52,7 @@ let score = 72;
 submit.disabled = true;
 userGuessContainer.style.display = "none";
 nextWord.style.display = "none";
+clueMessageContainer.style.display ="none";
 
 // const getRandomNumberInRange = (min: number, max: number) => {
 //     return Math.random() * (max - min) + min;
@@ -128,6 +130,8 @@ const handlStartGame = () => {
     nextWord.style.display = "block";
     nextWord.disabled = true;
     instructionsCard.style.display = "none";
+    clueMessageContainer.style.display ="flex";
+
 
 };
 
@@ -184,6 +188,7 @@ const restartGame = () => {
     userGuessContainer.style.display = "none";
     nextWord.style.display = "none";
     clueCard.innerHTML = "Click start to play";
+    clueMessageContainer.style.display ="none";
     clueTrackerMessage.innerHTML = "";
     clueFail.innerHTML = "";
     clearInterval(timer);
