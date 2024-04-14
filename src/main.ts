@@ -12,7 +12,7 @@ import { Words} from "./word-data";
 import confetti, {Options} from "canvas-confetti";
 
 const begin = document.querySelector<HTMLButtonElement>(".start-game");
-const nextWord = document.querySelector<HTMLButtonElement>(".next-word")
+const nextWord = document.querySelector<HTMLButtonElement>(".next-word");
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
 const clueTrackerMessage = document.querySelector(".clue__tracker-message");
 const clueFail = document.querySelector(".clue__fail-message");
@@ -135,7 +135,7 @@ const enableSubmit = () => {
 };
 
 //This function handles the next clue showing up on the card, by incrementing the counter and appending that to the card.
-const nextClue = () => {
+export const nextClue = () => {
     if (cluesUsed < theRandomWord.clues.length) {
         clueCard.innerText += `${theRandomWord.clues[cluesUsed]} \n`;
         cluesUsed++;
@@ -151,7 +151,7 @@ const nextClue = () => {
 };
 
 //The function that checks the guess of the user against the word. Returns a well done message if guess is correct. Otherwise a try again message if it is not a match
-const handleGuessInput = () => {
+export const handleGuessInput = () => {
     const guessWord = guessInput.value.toUpperCase();
     if (guessWord == theRandomWord.word.toUpperCase()) {
         clueCard.innerText = `Yay! You got it!`
