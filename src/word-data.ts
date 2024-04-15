@@ -14,7 +14,7 @@ export const Words = [
   },
   {
     word: "Dinner",
-    clues: ["meal", "party", "food", "roast", "evening", "feast"],
+    clues: ["meal", "evening", "food", "roast", "party", "feast"],
   },
   {
     word: "Pizza",
@@ -22,7 +22,7 @@ export const Words = [
   },
   {
     word: "Airplane",
-    clues: ["fly", "airport", "pilot", "travel", "economy", "altitude"],
+    clues: ["flight", "airport", "pilot", "travel", "economy", "altitude"],
   },
   {
     word: "Hospital",
