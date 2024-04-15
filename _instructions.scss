@@ -1,0 +1,27 @@
+@use "./variables" as *;
+
+.intro{
+    background-color: $fourth-colour;
+    border: solid 4px red;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px;
+
+    h3{
+        font-family: $secondary-font;
+        color: $secondary-colour;
+        font-size: 30px;
+    }
+    
+    h4{
+        font-family: $secondary-font;
+        color: $secondary-colour;
+        font-size: 20px;
+    }
+
+    p{
+        font-family: $primary-font;
+        color: white;
+    }
+    
+}
