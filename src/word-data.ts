@@ -1,38 +1,4 @@
-/*
-PSUDOCODE
 
-// type Dog = {
-//   name: string;
-//   breed: string;
-//   "favourite food": string;
-//   age: number;
-//   legs: number;
-//   colour: string;
-//   trained: boolean
-//   "favourite toy"?: string;
-// };
-
-// //objects based on Dog type
-
-// const dogOne : Dog = {
-//   name: "Wolfie",
-//   breed: "Goldendoodle",
-//   "favourite food": "Chicken",
-//   age: 2,
-//   legs: 4,
-//   colour: "golden",
-//   trained: false
-// }
-
-// //acces dogOne's breed,, trained faveourite food
-// console.log(dogOne.breed)
-// console.log(dogOne.trained)
-// console.log(dogOne["favourite food"]);
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-Object
-
-*/
 export const Words = [
   {
     word: "House",
@@ -58,48 +24,83 @@ export const Words = [
     word: "Airplane",
     clues: ["fly", "airport", "pilot", "travel", "economy", "altitude"],
   },
-  
+  {
+    word: "Hospital",
+    clues: ["Ambulance", "Doctor", "Surgeon", "Nurse", "Emergency", "Ward"],
+  },
+  {
+    word: "Car",
+    clues: ["Drive", "Steer", "Wheels", "Vehicle", "Engine", "Racing"],
+  },
+  {
+    word: "Mountain",
+    clues: ["Hike", "Everest", "Peak", "Climb", "Alps", "Biking"],
+  },
+  {
+    word: "President",
+    clues: ["George Washington", "Vice", "Leader", "Cheif", "John F. Kennedy", "Priminister"],
+  },
+  {
+    word: "Zombie",
+    clues: ["Dead", "Apocolypse", "Horror", "Brain", "Halloween", "Walking"],
+  },
+  {
+    word: "Circus",
+    clues: ["Clowns", "Elephant", "Acrobats", "Trapeze", "Showman", "Juggling"],
+  },
+  {
+    word: "Jungle",
+    clues: ["Amazon", "Tropical", "Wilderness", "Mowgli", "Tarzan", "Monkeys"],
+  },
+  {
+    word: "Paris",
+    clues: ["Eiffel Tower", "Love", "Seine", "Louvre", "Croissants", "Capital"],
+  },
+  {
+    word: "School",
+    clues: ["Teacher", "Student", "Learn", "Classroom", "Playground", "Secondary"],
+  },
+  {
+    word: "Jewellry",
+    clues: ["Accessory", "Gold", "Silver", "Ring", "Trinkets", "Necklace"],
+  },
+  {
+    word: "Book",
+    clues: ["Read", "Pages", "Author", "Fiction", "Narrator", "Novel"],
+  },
+  {
+    word: "Bank",
+    clues: ["Money", "Loan", "Account", "Savings", "Piggy", "Deposit"],
+  },
+  {
+    word: "TV",
+    clues: ["Watch", "Films", "Smart", "Colour", "Flat Screen", "Channels"],
+  },
+  {
+    word: "Ship",
+    clues: ["Titanic", "Ocean", "Cruise", "Sailor", "Anchor", "Port"],
+  },
+  {
+    word: "Restaurant",
+    clues: ["Waiter", "Menu", "Expensive", "Chef", "Table", "Bill"],
+  },
+  {
+    word: "Football",
+    clues: ["Goal", "World Cup", "Teams", "Kick", "Game", "Penalty"],
+  },
+  {
+    word: "Children",
+    clues: ["Family", "Young", "Siblings", "Kids", "Offspring", "Pediatrics"],
+  },
+  {
+    word: "Island",
+    clues: ["Remote", "Sunny", "Desert", "Treasure", "Pirate", "Retreat"],
+  },
+  {
+    word: "Rainbow",
+    clues: ["Colourful", "Dorothy", "Rain", "Gold", "Spectrum", "Sky"],
+  },
 ];
 
-// export const WordsTwo = [
-//   {
-//     words: "Hospital",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "Car",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "Mountain",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "President",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "Zombie",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "FunFair",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "Jungle",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "Paris",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "School",
-//     clues: ["one", "two", "three", "four"]
-//   },
-//   {
-//     words: "Jewellry",
-//     clues: ["one", "two", "three", "four"]
-//   },
-// ]
+
+

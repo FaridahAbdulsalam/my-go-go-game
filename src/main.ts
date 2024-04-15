@@ -181,9 +181,9 @@ export const handleGuessInput = () => {
 const restartGame = () => {
   instructionsCard.style.display = "block";
   begin.style.display = "block";
-  score = (copyWords.length)*12;
   copyWords = [...Words];
   usedWords = [];
+  score = (copyWords.length)*12;
   secs = 59;
   minutes = 4;
   userGuessContainer.style.display = "none";
