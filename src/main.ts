@@ -1,12 +1,3 @@
-/*
-PSUDOCODE
-
-When start is clicked then page will generate a random word from Words with one clue.
-User then tyoes into input box, if input.texcontent matches with the random word, YAY message is displayed with the correct word.
-    However if the word input by the user does NOT match, BooHoo message appears and user can input guess again or clcik "another clue" that will generate the next clue word in the array 
-        If there are no more words in the arrary to display and user still has not guessed correctly, then display "Oh No" message with "skip word" button
-*/
-
 import "./styles.scss";
 import { Words } from "./word-data";
 import confetti, { Options } from "canvas-confetti";
@@ -15,9 +6,7 @@ const instructionsCard = document.querySelector<HTMLInputElement>(".intro");
 const begin = document.querySelector<HTMLButtonElement>(".start-game");
 const nextWord = document.querySelector<HTMLButtonElement>(".next-word");
 const clueCard = document.querySelector<HTMLInputElement>(".clue__word");
-const clueMessageContainer = document.querySelector<HTMLElement>(
-  ".clue__messages-container"
-);
+const clueMessageContainer = document.querySelector<HTMLElement>(".clue__messages-container");
 const clueTrackerMessage = document.querySelector(".clue__tracker-message");
 const clueFail = document.querySelector(".clue__fail-message");
 const userGuessContainer = document.querySelector<HTMLElement>(".user-guess");
